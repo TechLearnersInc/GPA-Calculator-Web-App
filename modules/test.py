@@ -20,7 +20,7 @@ def main():
     result = clean_data.clean_data()
     print(result[0])
     print(result[1])
-    print(result[2])
+
 
 
 if __name__ == "__main__":

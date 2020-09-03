@@ -20,13 +20,13 @@
 		<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" />
 
 		<title>GPA Calculator</title>
-		<link href="icon_round.png" rel="icon" />
+		<link href="{{ url_for('static', filename='img/icon.png') }}" rel="icon" />
 
 		<!-- CSS Stylesheets -->
-		<link href="styles.css" rel="stylesheet" />
+ 		<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" />
 
 		<!-- Ajax CSRF Token -->
-		<!-- <script type="text/javascript">
+		<script type="text/javascript">
 			let csrf_token = "{{ csrf_token() }}";
 			$.ajaxSetup({
 				beforeSend: function (xhr, settings) {
@@ -35,13 +35,13 @@
 					}
 				},
 			});
-		</script> -->
+		</script>
 
 		<!-- Scripts -->
-		<script src="dynamicForm.js"></script>
-		<script src="gradeSheet.js"></script>
-		<script src="calculate.js"></script>
-	</head>
+		<script src="{{ url_for('static', filename='js/calculate.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/dynamicForm.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/gradeSheet.js') }}"></script>
+    </head>
 
 	<body>
 		<header class="header">
@@ -103,7 +103,7 @@
 					<div class="col-12 col-sm-12 col-md-8 col-lg-7">
 						<form
 							class="form-container"
-							action="http://localhost:5000/calculate"
+							action="{{ url_for("calculate") }}"
 							method="POST"
 							id="calculate_gpa_form"
 						>
@@ -111,7 +111,7 @@
 								class="h2 text-center p-2 gpa-text"
 								style="color: #37474f; font-family: 'Alata', sans-serif"
 							>
-								<img src="icon.png" class="img-fluid" alt="" width="8%" />
+								<img src="{{ url_for("static", filename="img/icon.png") }}" class="img-fluid" alt="" width="8%" />
 								GPA CALCULATOR
 							</h2>
 							<div class="form-group form-row">

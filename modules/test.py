@@ -12,15 +12,11 @@ data_json = {
     "Input_Field_4": "2.5"
 }
 
-
-
-
 def main():
     clean_data = DataPreProcessingGPA(data_json)
     result = clean_data.clean_data()
     print(result[0])
     print(result[1])
-
 
 
 if __name__ == "__main__":

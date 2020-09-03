@@ -14,16 +14,22 @@ $(document).ready(function () {
 
     $(`#${calculate_form_id}`).submit(function (event) {
         event.preventDefault();
-        // $(`b[id='${calculated_gpa_id}']`).text(`GPA: 3.5`);  // TEST
-        // $(`#${calculate_modal_id}`).modal("show");  // TEST
         if ($(`#${gpa_grade_sheet_input_box_id}`).val().trim().length === 0) {
             showCheckAlert("Please, take a look at the Grade Sheet first");
+            return;
         } else {
             let form = $(this);
             let formData = $(this).serializeArray()
             let preparedData = {};
             for (let i in formData) {
-                preparedData[formData[i].name] = formData[i].value.trim();
+                let fieldName = String(formData[i].name);
+                if (fieldName.match(/^Select\_Field\_\d+/g)) {
+                    if (formData[i].value === "Select Grade") {
+                        showCheckAlert("You've missed to select Grade. Plesae, take a look at the Grade Selection fields.");
+                        return;
+                    }
+                }
+                preparedData[fieldName] = formData[i].value.trim();
             }
             $.ajax({
                 type: form.attr('method'),
@@ -36,7 +42,6 @@ $(document).ready(function () {
                 }
             }).done(function (data) {
                 console.log(data)
-                console.log($(`input[id="A_PLUS"]`).val());
             });
         }
     });

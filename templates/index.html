@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- Global CSS and Libraries-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+			integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+			crossorigin="anonymous"
+		/>
+		<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" />
+
+		<title>GPA Calculator</title>
+		<link href="icon_round.png" rel="icon" />
+
+		<!-- CSS Stylesheets -->
+		<link href="styles.css" rel="stylesheet" />
+
+		<!-- Ajax CSRF Token -->
+		<!-- <script type="text/javascript">
+			let csrf_token = "{{ csrf_token() }}";
+			$.ajaxSetup({
+				beforeSend: function (xhr, settings) {
+					if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+						xhr.setRequestHeader("X-CSRFToken", csrf_token);
+					}
+				},
+			});
+		</script> -->
+
+		<!-- Scripts -->
+		<script src="dynamicForm.js"></script>
+		<script src="gradeSheet.js"></script>
+		<script src="calculate.js"></script>
+	</head>
+
+	<body>
+		<header class="header">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom">
+				<div class="container">
+					<a class="navbar-brand" href="#">TECH LEARNERS</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Link</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									id="navbarDropdown"
+									role="button"
+									data-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false"
+								>
+									Dropdown
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Disabled</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Calculator section -->
+		<div class="back-image">
+			<div class="container calculator-section clearfix">
+				<div class="row justify-content-center">
+					<div class="col-12 col-sm-12 col-md-8 col-lg-7">
+						<form
+							class="form-container"
+							action="http://localhost:5000/calculate"
+							method="POST"
+							id="calculate_gpa_form"
+						>
+							<h2
+								class="h2 text-center p-2 gpa-text"
+								style="color: #37474f; font-family: 'Alata', sans-serif"
+							>
+								<img src="icon.png" class="img-fluid" alt="" width="8%" />
+								GPA CALCULATOR
+							</h2>
+							<div class="form-group form-row">
+								<div class="col">
+									<button
+										type="button"
+										class="btn btn-secondary btn-block"
+										onclick="showGradeSheet()"
+									>
+										<i class="far fa-edit"></i> Edit Grade Sheet
+									</button>
+								</div>
+							</div>
+							<input
+								type="hidden"
+								class="form-control"
+								name="gpa_grade_sheet"
+								id="gpa_grade_sheet"
+								placeholder="GPA Grade Sheet"
+								required
+							/>
+							<div class="input_field_wrap">
+								<div class="form-group form-row" id="row1">
+									<!-- Button trigger modal -->
+									<div class="col-5 col-sm-5">
+										<select class="form-control" name="Select_Field_1" required>
+											<option>Select Grade</option>
+											<option>A+</option>
+											<option>A</option>
+											<option>A-</option>
+											<option>B+</option>
+											<option>B</option>
+											<option>B-</option>
+											<option>C+</option>
+											<option>C</option>
+											<option>C-</option>
+											<option>D+</option>
+											<option>D</option>
+											<option>D-</option>
+											<option>F</option>
+										</select>
+									</div>
+									<div class="col-4 col-sm-4">
+										<input
+											type="text"
+											class="form-control"
+											name="Input_Field_1"
+											id="Input_Field_1"
+											placeholder="Credit, Ex:3.5"
+											required
+										/>
+										<script type="text/javascript">
+											$("input[name='Input_Field_1']").on("input blur paste", function () {
+												let inputField = $(this);
+												if (isNaN(Number(inputField.val()))) {
+													inputField.val("😠");
+													window.setTimeout(function () {
+														inputField.val("");
+													}, 250);
+												} else {
+													inputField.val(inputField.val().trim());
+												}
+											});
+										</script>
+									</div>
+									<div class="col-3 col-sm-3">
+										<button
+											type="button"
+											class="btn btn-danger btn-block add_field_button"
+											disabled
+										>
+											<i class="far fa-trash-alt"></i>
+											<span class="d-none d-sm-none d-md-none d-lg-inline">Delete</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group form-row">
+								<div class="col-6">
+									<button type="button" class="btn btn-primary btn-block" onclick="clearFields()">
+										<i class="fas fa-broom"></i> Clear Fields
+									</button>
+								</div>
+								<div class="col-6">
+									<button type="button" class="btn btn-info btn-block add_field_button">
+										<i class="far fa-plus-square"></i> New Field
+									</button>
+								</div>
+							</div>
+							<div id="showCheckAlert"></div>
+							<button type="submit" class="btn btn-color-custom btn-block text-white">
+								<i class="fas fa-calculator"></i> Calculate
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- footer start -->
+		<footer id="footer" class="footer-1">
+			<div class="main-footer widgets-dark typo-light">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget subscribe no-box">
+								<h5 class="widget-title">GPA CALCULATOR<span></span></h5>
+								<p>About the Product, little description will go here..</p>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget no-box">
+								<h5 class="widget-title">Quick Links<span></span></h5>
+								<ul class="thumbnail-widget">
+									<li>
+										<div class="thumb-content">
+											<a href="#.">Get Started</a>
+										</div>
+									</li>
+									<li>
+										<div class="thumb-content">
+											<a href="#.">Top Leaders</a>
+										</div>
+									</li>
+									<li>
+										<div class="thumb-content">
+											<a href="#.">Success Stories</a>
+										</div>
+									</li>
+									<li>
+										<div class="thumb-content">
+											<a href="#.">Event/Tickets</a>
+										</div>
+									</li>
+									<li>
+										<div class="thumb-content">
+											<a href="#.">News</a>
+										</div>
+									</li>
+									<li>
+										<div class="thumb-content">
+											<a href="#.">Lifestyle</a>
+										</div>
+									</li>
+									<li>
+										<div class="thumb-content">
+											<a href="#.">About</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget no-box">
+								<h5 class="widget-title">Get Started<span></span></h5>
+								<p>Get access to your full Training and Marketing Suite.</p>
+								<a class="btn btn-custom" href="#." target="_blank">Register Now</a>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget no-box">
+								<h5 class="widget-title">Team<span></span></h5>
+								<h6>Rizwan Hasan</h6>
+								<p class="text-white">
+									<a href="mailto:info@domain.com" class="text-white" title="glorythemes"
+										>info@domain.com</a
+									>
+								</p>
+								<ul class="social-footer2">
+									<li class="">
+										<a href="https://www.facebook.com/" target="_blank" title="Facebook"
+											><i class="fab fa-facebook-square"></i
+										></a>
+									</li>
+									<li class="">
+										<a href="https://twitter.com" target="_blank" title="Twitter"
+											><i class="fab fa-twitter"></i
+										></a>
+									</li>
+									<li class="">
+										<a title="Github" target="_blank" href="https://www.github.com/"
+											><i class="fab fa-github"></i
+										></a>
+									</li>
+								</ul>
+
+								<p>Tanmoy Barua</p>
+								<p>
+									<a href="mailto:info@domain.com" class="text-white" title="glorythemes"
+										>tanmoybarua43@gmail.com</a
+									>
+								</p>
+								<ul class="social-footer2">
+									<li class="">
+										<a href="https://www.facebook.com/" target="_blank" title="Facebook"
+											><i class="fab fa-facebook-square"></i
+										></a>
+									</li>
+									<li class="">
+										<a href="https://twitter.com" target="_blank" title="Twitter"
+											><i class="fab fa-twitter"></i
+										></a>
+									</li>
+									<li class="">
+										<a title="Github" target="_blank" href="https://www.github.com/"
+											><i class="fab fa-github"></i
+										></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<p>Copyright TechLearners © 2020. All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Modal -->
+		<div
+			class="modal fade"
+			id="gradeSheetModal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Edit Grade sheet</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="grade_sheet_modal">
+						<h6 class="text-center" id="exampleModalLabel">Change your grade sheet</h6>
+						<form id="grade_sheet_form">
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>A+</b> </span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="A_PLUS"
+											name="A_PLUS"
+											placeholder="Value of A+"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom">
+												<b><i class="fas fa-pencil-alt"></i></b>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>A</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="A"
+											name="A"
+											placeholder="Value of A"
+											value="4.0"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>A-</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="A_MINUS"
+											name="A_MINUS"
+											placeholder="Value of A-"
+											value="3.7"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>B+</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="B_PLUS"
+											name="B_PLUS"
+											placeholder="Value of B+"
+											value="3.3"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>B</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="B"
+											name="B"
+											placeholder="Value of B"
+											value="3.0"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>B-</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="B_MINUS"
+											name="B_MINUS"
+											placeholder="Value of B-"
+											value="2.7"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>C+</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="C_PLUS"
+											name="C_PLUS"
+											placeholder="Value of C+"
+											value="2.3"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>C</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="C"
+											name="C"
+											placeholder="Value of C"
+											value="2.0"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>C-</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="C_MINUS"
+											name="C_MINUS"
+											placeholder="Value of C-"
+											value="1.7"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom">
+												<b>
+													<i class="fas fa-pencil-alt"></i>
+												</b>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>D+</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="D_PLUS"
+											name="D_PLUS"
+											placeholder="Value of D+"
+											value="1.3"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>D</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="D"
+											name="D"
+											placeholder="Value of D"
+											value="1.0"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>D-</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="D_MINUS"
+											name="D_MINUS"
+											placeholder="Value of D-"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row justify-content-center">
+								<div class="col-11 col-md-8 mb-3">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>F</b></span>
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="F"
+											name="F"
+											placeholder="Value of F"
+											value="0"
+											aria-describedby="inputGroupPrepend"
+										/>
+										<div class="input-group-prepend">
+											<span class="input-group-text input-group-text-custom"
+												><b><i class="fas fa-pencil-alt"></i></b
+											></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Apply</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Calculate modals -->
+		<div
+			class="modal fade"
+			id="calculatesheet"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="myLargeModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title text-center" id="exampleModalLabel">
+							<b>Total Calculation</b>
+						</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="grade_sheet_modal">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="grade-point text-center">
+										<h1
+											class="h1 mt-3 badge badge-info"
+											style="font-size: 3.5rem; font-family: 'PT Sans', sans-serif"
+										>
+											<b id="calculated_gpa">GPA</b>
+										</h1>
+									</div>
+									<div class="display-button d-flex justify-content-center mt-3">
+										<button
+											type="submit"
+											class="btn btn-outline-primary"
+											onclick="displayGradeTable()"
+											style="display: none"
+										>
+											Display Grade Table
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col d-flex justify-content-center align-content-center">
+									<div class="grade-badge font-weight-bold mt-2 mb-1">
+										<table
+											class="table table-bordered text-center table-hover"
+											id="grade_sheet_calculator_modal"
+											style="display: none"
+										>
+											<thead class="thead-dark">
+												<tr>
+													<th scope="col">Grade Letter</th>
+													<th scope="col">Grade Point</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr id="A_PLUS">
+													<td scope="row">A+</td>
+													<td>4.00</td>
+												</tr>
+												<tr>
+													<td scope="row">A</td>
+													<td>3.75</td>
+												</tr>
+												<tr>
+													<td scope="row">A-</td>
+													<td>3.50</td>
+												</tr>
+												<tr>
+													<td scope="row">B+</td>
+													<td>3.33</td>
+												</tr>
+												<tr>
+													<td scope="row">B</td>
+													<td>3.00</td>
+												</tr>
+												<tr>
+													<td scope="row">B-</td>
+													<td>2.67</td>
+												</tr>
+												<tr>
+													<td scope="row">C+</td>
+													<td>2.33</td>
+												</tr>
+												<tr>
+													<td scope="row">C</td>
+													<td>2.00</td>
+												</tr>
+												<tr>
+													<td scope="row">C-</td>
+													<td>1.67</td>
+												</tr>
+												<tr>
+													<td scope="row">D+</td>
+													<td>1.33</td>
+												</tr>
+												<tr>
+													<td scope="row">D</td>
+													<td>1.20</td>
+												</tr>
+												<tr>
+													<td scope="row">D-</td>
+													<td>1.00</td>
+												</tr>
+												<tr>
+													<td scope="row">F</td>
+													<td>0.00</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="justify-content: center">
+						<form>
+							<h6 class="h6 text-center undeline">
+								<u>Feedback</u>
+							</h6>
+							<div class="form-group form-row">
+								<div class="col">
+									<select class="form-control" name="Select_Field_1">
+										<option>Questions</option>
+									</select>
+								</div>
+								<div class="col">
+									<select class="form-control" name="Select_Field_1">
+										<option>Questions</option>
+									</select>
+								</div>
+								<div class="col">
+									<select class="form-control" name="Select_Field_1">
+										<option>Questions</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-row">
+								<div class="col">
+									<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">
+										Close
+									</button>
+								</div>
+								<div class="col">
+									<button type="button" class="btn btn-primary btn-block">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

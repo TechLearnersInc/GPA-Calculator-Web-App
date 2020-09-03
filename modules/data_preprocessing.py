@@ -4,8 +4,8 @@ import json
 class DataPreProcessingGPA:
     """Pre-processing the GPA Calculation data that was given by frontend"""
 
-    def __init__(self, gpa_json):
-        self.__dict__ = json.loads(gpa_json)
+    def __init__(self, gpa_dict):
+        self.__dict__ = gpa_dict
         self.all_grades_avail = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
         self.grade_sheet = dict()
 
@@ -28,7 +28,7 @@ class DataPreProcessingGPA:
                     # Validate Grades & Credits
                     if value in self.all_grades_avail:
                         grades_list.append(value)
-                        credits_list.append(get_credit)
+                        credits_list.append(float(get_credit))
 
                 else:
                     continue
@@ -50,3 +50,7 @@ class DataPreProcessingGPA:
 
         data_list = [self.grade_sheet, grades_list, credits_list]
         return data_list
+
+
+if __name__ == '__main__':
+    print("This is a moudle written for data preprocessing")

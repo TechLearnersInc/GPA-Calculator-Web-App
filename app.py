@@ -1,29 +1,27 @@
-import os
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
+from sqlalchemy.ext.declarative import declarative_base
+
 from Database.database import Database
+
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
+
+app.config['SECRET_KEY'] = 'HelloWorld'
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://inan:12345@localhost/gpacalculator"
+app.config['SQLALCHEMY_POOL_SIZE'] = 20
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_pre_ping': True,
+    'pool_recycle': 1,
+}
+
+db = SQLAlchemy(app=app)
+dbEngine = db.engine
+dbBase = declarative_base(dbEngine)
 
 # protecting our app
 csrf = CSRFProtect(app)
-
-app.config['SECRET_KEY'] = 'HelloWorld'
-
-# # Connecting The MySQL Database
-# app.config['MYSQL_HOST'] = 'https://techlearners.mysql.database.azure.com'
-# app.config['MYSQL_USER'] = 'inan@techlearners'
-# app.config['MYSQL_PASSWORD'] = 'HelloWorld12345'
-# app.config['MYSQL_DB'] = 'gpacalculator'
-# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql//techlearners.mysql.database.azure.com:3306/gpacalculator"
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# db = SQLAlchemy(app)
-
-db = Database()
-#db.reflect_tables()
-
 
 from route import *
 

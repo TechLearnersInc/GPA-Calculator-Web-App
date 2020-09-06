@@ -19,7 +19,7 @@ body {
 }
 
 .back-image {
-	background-image: url("img/header-background.jpg");
+	background-image: url("img/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg");
 }
 
 .heading-text {
@@ -297,7 +297,7 @@ ul.social-footer2 li a {
 	transition: all 250ms ease-in-out 0s;
 }
 .bg-dark-custom {
-	background-color: #262431 !important;
+	background-color: #ad0202 !important;
 }
 .btn-color-custom {
 	background-color: #6200ee;

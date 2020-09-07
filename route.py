@@ -26,16 +26,24 @@ def calculate():
     # validate form data (what happens when form data not correctly fetched)
     if formData:
         try:
-            grades_credits_list, grade_sheet = DataPreProcessingGPA(formData).clean_data()
-            gpa = calculate_gpa.calculate(grades_credits_list, grade_sheet)
-            scale_value_list = list(grade_sheet.values())
+            data_list = DataPreProcessingGPA(formData).clean_data()
+            # if data_list == -1:
+            #     return "ERROR"
+            gpa = calculate_gpa.calculate(data_list[1], data_list[0])
+            # if gpa == - 1:
+            #     return "ERROR"
+            scale_value_list = list(data_list[0].values())
             scale = max(scale_value_list)
-            user_gpa_history = GPA_HISTORY(scale=float(scale), gpa=float(gpa), grade_sheet=str(grade_sheet))
-            db.session.add(user_gpa_history)
-            db.session.commit()
+            try:
+                user_gpa_history = GPA_HISTORY(scale=float(scale), gpa=float(gpa), grade_sheet=str(grade_sheet))
+                db.session.add(user_gpa_history)
+                db.session.commit()
+            except:
+                pass #return "ERROR"
+            
             return jsonify(
                 {"GPA": gpa})
-        except:
+        except (DeprecationWarning, ConnectionAbortedError, ConnectionError, ConnectionRefusedError):
             return jsonify(
                 {"GPA": -1})
     else:

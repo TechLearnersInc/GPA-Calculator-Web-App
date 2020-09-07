@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS feedback;
 DROP TABLE  IF EXISTS gpa_history;
 -- Create the table in the specified schema
 CREATE TABLE gpa_history
-(   id INTEGER AUTO_INCREMENT PRIMARY KEY,
+(   gpa_history_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     scale DECIMAL(4, 2) NOT NULL,
     gpa DECIMAL(4, 2) NOT NULL,
     date_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -32,6 +32,7 @@ CREATE TABLE gpa_history
 -- Create the table in the specified schema
 CREATE TABLE feedback
 (
+    feedback_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     gpa DECIMAL(4, 2) NOT NULL,
     date_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     query_1 VARCHAR(50) NOT NULL,
@@ -53,3 +54,6 @@ CREATE TABLE feedback
     d_minus DECIMAL(4, 2) NOT NULL,
     f DECIMAL(4, 2) NOT NULL
 );
+
+
+

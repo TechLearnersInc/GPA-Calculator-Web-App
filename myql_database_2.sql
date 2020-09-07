@@ -13,19 +13,8 @@ CREATE TABLE gpa_history
     date_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT ck_gpa_scale CHECK(gpa <= scale),
     -- Specify more columns here
-    a_plus DECIMAL(4, 2) NOT NULL,
-    a DECIMAL(4, 2) NOT NULL,
-    a_minus DECIMAL(4, 2) NOT NULL,
-    b_plus DECIMAL(4, 2) NOT NULL,
-    b DECIMAL(4, 2) NOT NULL,
-    b_minus DECIMAL(4, 2) NOT NULL,
-    c_plus DECIMAL(4, 2) NOT NULL,
-    c DECIMAL(4, 2) NOT NULL,
-    c_minus DECIMAL(4, 2) NOT NULL,
-    d_plus DECIMAL(4, 2) NOT NULL,
-    d DECIMAL(4, 2) NOT NULL,
-    d_minus DECIMAL(4, 2) NOT NULL,
-    f DECIMAL(4, 2) NOT NULL
+    grade_sheet VARCHAR(100) NOT NULL
+
 );
 
 
@@ -39,21 +28,6 @@ CREATE TABLE feedback
     query_2 VARCHAR(50) NOT NULL,
     query_3 VARCHAR(50) NOT NULL,
     -- Specify more columns here
+    grade_sheet VARCHAR(100) NOT NULL
 
-    a_plus DECIMAL(4, 2) NOT NULL,
-    a DECIMAL(4, 2) NOT NULL,
-    a_minus DECIMAL(4, 2) NOT NULL,
-    b_plus DECIMAL(4, 2) NOT NULL,
-    b DECIMAL(4, 2) NOT NULL,
-    b_minus DECIMAL(4, 2) NOT NULL,
-    c_plus DECIMAL(4, 2) NOT NULL,
-    c DECIMAL(4, 2) NOT NULL,
-    c_minus DECIMAL(4, 2) NOT NULL,
-    d_plus DECIMAL(4, 2) NOT NULL,
-    d DECIMAL(4, 2) NOT NULL,
-    d_minus DECIMAL(4, 2) NOT NULL,
-    f DECIMAL(4, 2) NOT NULL
 );
-
-
-

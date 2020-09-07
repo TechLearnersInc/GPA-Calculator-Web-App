@@ -10,6 +10,7 @@ class GPA_HISTORY(dbBase):
         autoload_with=dbEngine
     )
 
+
 class FEEDBACK(dbBase):
     __table__ = Table(
         'feedback',

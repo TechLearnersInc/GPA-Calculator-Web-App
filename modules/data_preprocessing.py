@@ -43,12 +43,12 @@ class DataPreProcessingGPA:
                     # validate the key
                     self.grade_sheet[key] = float(value)
                 else:
-                    self.grade_sheet[key] = None
+                    self.grade_sheet[key] = -1
         except:
             return "ERROR"
 
         data_list = [self.grade_sheet, grades_credits_list]
-        return data_list
+        return grades_credits_list, self.grade_sheet
 
 
 if __name__ == '__main__':

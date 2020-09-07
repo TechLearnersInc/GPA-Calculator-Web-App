@@ -5,6 +5,7 @@ USE gpacalculator;
 
 DROP TABLE IF EXISTS feedback;
 DROP TABLE  IF EXISTS gpa_history;
+
 -- Create the table in the specified schema
 CREATE TABLE gpa_history
 (   gpa_history_id INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -13,7 +14,7 @@ CREATE TABLE gpa_history
     date_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT ck_gpa_scale CHECK(gpa <= scale),
     -- Specify more columns here
-    grade_sheet VARCHAR(100) NOT NULL
+    grade_sheet VARCHAR(10000) NOT NULL
 
 );
 
@@ -28,6 +29,6 @@ CREATE TABLE feedback
     query_2 VARCHAR(50) NOT NULL,
     query_3 VARCHAR(50) NOT NULL,
     -- Specify more columns here
-    grade_sheet VARCHAR(100) NOT NULL
+    grade_sheet VARCHAR(10000) NOT NULL
 
 );

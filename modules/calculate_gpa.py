@@ -1,4 +1,3 @@
-
 def get_value(key, grades_dict):
     if key == 'A+':
         return grades_dict.get("A_PLUS")
@@ -47,7 +46,8 @@ def calculate(grades_credits_list, grades_dict):
     try:
         gpa = total_grade_credit / total_credit
         final_gpa = '{:.2f}'.format(gpa)
-    except (ZeroDivisionError, TypeError):
+    except (ZeroDivisionError, TypeError) as e:
+        print(e)
         return -1
 
     return final_gpa

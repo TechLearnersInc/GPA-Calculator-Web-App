@@ -30,17 +30,19 @@ class DataPreProcessingGPA:
 
                 else:
                     continue
-        except (TypeError, IndexError, KeyError):
+        except (TypeError, IndexError, KeyError) as e:
+            print(e)
             return -1
 
         try:
             for key, value in grade_sheet_dict.items():
                 if value:
-                    # validate the key
+                    # Validate the key
                     self.grade_sheet[key] = float(value)
                 else:
                     self.grade_sheet[key] = -1
-        except (TypeError, KeyError):
+        except (TypeError, KeyError) as e:
+            print(e)
             return -1
 
         data_list = [self.grade_sheet, grades_credits_list]
@@ -48,4 +50,4 @@ class DataPreProcessingGPA:
 
 
 if __name__ == '__main__':
-    print("This is a moudle written for data preprocessing")
+    print("This is a module written for data preprocessing")

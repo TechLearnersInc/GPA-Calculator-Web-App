@@ -16,7 +16,6 @@ CREATE TABLE gpa_history
     CONSTRAINT ck_gpa_scale CHECK (gpa <= scale),
     -- Specify more columns here
     grade_sheet    VARCHAR(10000) NOT NULL
-
 );
 
 -- Create the table in the specified schema
@@ -30,5 +29,4 @@ CREATE TABLE feedback
     query_3     VARCHAR(50)    NOT NULL,
     -- Specify more columns here
     grade_sheet VARCHAR(10000) NOT NULL
-
 );

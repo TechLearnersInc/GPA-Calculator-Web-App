@@ -22,11 +22,5 @@ CREATE TABLE gpa_history
 CREATE TABLE feedback
 (
     feedback_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    gpa         DECIMAL(4, 2)  NOT NULL,
-    date_time   DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    query_1     VARCHAR(50)    NOT NULL,
-    query_2     VARCHAR(50)    NOT NULL,
-    query_3     VARCHAR(50)    NOT NULL,
-    -- Specify more columns here
-    grade_sheet VARCHAR(10000) NOT NULL
-);
+    feed_back   VARCHAR(10000) NOT NULL,
+    date_time   DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)

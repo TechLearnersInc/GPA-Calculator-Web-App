@@ -2,7 +2,7 @@ import json
 
 from flask import render_template, jsonify, request, session
 
-from Database.database_models import GPA_HISTORY
+from Database.database_models import GPA_HISTORY, FEEDBACK
 from app import app, db
 from modules import calculate_gpa
 from modules.data_preprocessing import DataPreProcessingGPA
@@ -29,10 +29,10 @@ def calculate():
         try:
             data_list = DataPreProcessingGPA(formData).clean_data()
             # if data_list == -1:
-            #     return "ERROR"
+            #     return "ERROR" # Error Page
             gpa = calculate_gpa.calculate(data_list[1], data_list[0])
             # if gpa == - 1:
-            #     return "ERROR"
+            #     return "ERROR" # Error Page
             scale_value_list = list(data_list[0].values())
             scale = max(scale_value_list)
             grade_sheet = data_list[0]
@@ -43,10 +43,25 @@ def calculate():
                 db.session.commit()
             except Exception as e:
                 print(e)
+                # return  # Error Page
 
             return jsonify({"GPA": gpa})
         except (DeprecationWarning, ConnectionAbortedError, ConnectionError, ConnectionRefusedError) as e:
             print(e)
-            return jsonify({"GPA": -1})
+            return jsonify({"GPA": -1})  # Error Page
     else:
-        return jsonify({"GPA": -1})
+        return jsonify({"GPA": -1}) # Error Page
+
+
+@app.route('/feedback', methods=["POST"])
+def feedback():
+    formData = request.form.to_dict()
+    if formData:
+        try:
+            user_feedback = FEEDBACK(feed_back=formData["key"])
+            db.session.add(user_feedback)
+            db.session.commit()
+        except Exception as e:
+            print(e)
+
+    return render_template("index.html.jinja2")

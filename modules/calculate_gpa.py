@@ -42,12 +42,13 @@ def calculate(grades_credits_list, grades_dict):
         try:
             total_grade_credit += temp_grade_point * course_info[1]
         except TypeError:
+            print("TypeError in Total Grade Credit Calculation")
             return -1
     try:
         gpa = total_grade_credit / total_credit
         final_gpa = '{:.2f}'.format(gpa)
     except (ZeroDivisionError, TypeError) as e:
-        print(e)
+        print(e, "GPA Calculation")
         return -1
 
     return final_gpa

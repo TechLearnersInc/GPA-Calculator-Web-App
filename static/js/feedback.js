@@ -12,7 +12,7 @@ function postFeedback() {
         data: {
             feedback: getFeedback()
         },
-        success: function (data) {
+        success: function () {
             document.getElementById("feedback_row").remove();
         },
     }).done(function (data) {

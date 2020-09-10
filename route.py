@@ -65,4 +65,4 @@ def feedback():
         except Exception as e:
             print(e)
 
-    return render_template("index.html.jinja2")
+    return jsonify({"STATUS": "OK"})

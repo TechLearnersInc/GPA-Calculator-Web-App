@@ -20,10 +20,10 @@
 		<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" />
 
 		<title>GPA Calculator</title>
-		<link href="{{ url_for('static', filename='img/icon.png') }}" rel="icon" />
+		<link href="/static/favicon.png" rel="icon" />
 
 		<!-- CSS Stylesheets -->
- 		<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" />
+		<link href="/static/styles.css" rel="stylesheet" />
 
 		<!-- Ajax CSRF Token -->
 		<script type="text/javascript">
@@ -38,16 +38,26 @@
 		</script>
 
 		<!-- Scripts -->
-		<script src="{{ url_for('static', filename='js/calculate.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/dynamicForm.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/gradeSheet.js') }}"></script>
-    </head>
+		<script src="/static/js/dynamicForm.js"></script>
+		<script src="/static/js/gradeSheet.js"></script>
+		<script src="/static/js/calculate.js"></script>
+		<script src="/static/js/buttonEffect.js"></script>
+		<script src="/static/js/feedback.js"></script>
+	</head>
 
 	<body>
 		<header class="header">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom">
 				<div class="container">
-					<a class="navbar-brand" href="#">TechLearners</a>
+					<a class="navbar-brand" href="index.html">
+						<img
+							src="/static/img/TechLearners.jpg"
+							alt="TechLearners"
+							class="img-fluid rounded"
+							width="40px"
+						/>
+						TECH LEARNERS
+					</a>
 					<button
 						class="navbar-toggler"
 						type="button"
@@ -111,17 +121,18 @@
 								class="h2 text-center p-2 gpa-text"
 								style="color: #37474f; font-family: 'Alata', sans-serif"
 							>
-								<img src="{{ url_for("static", filename="img/icon.png") }}" class="img-fluid" alt="" width="8%" />
+								<img src="/static/img/icon.png" class="img-fluid" alt="" width="8%" />
 								GPA CALCULATOR
 							</h2>
 							<div class="form-group form-row">
 								<div class="col">
 									<button
 										type="button"
-										class="btn btn-secondary btn-block"
+										class="btn btn-secondary btn-block load-button"
 										onclick="showGradeSheet()"
 									>
-										<i class="far fa-edit"></i> Edit Grade Sheet
+										<i class="loading-icon fas fa-circle-notch fa-spin hide mr-3"></i
+										><span><i class="far fa-edit"></i> Grading System</span>
 									</button>
 								</div>
 							</div>
@@ -138,7 +149,7 @@
 									<!-- Button trigger modal -->
 									<div class="col-5 col-sm-5">
 										<select class="form-control" name="Select_Field_1" required>
-											<option>Select Grade</option>
+											<option>Grade</option>
 											<option>A+</option>
 											<option>A</option>
 											<option>A-</option>
@@ -192,18 +203,19 @@
 							<div class="form-group form-row">
 								<div class="col-6">
 									<button type="button" class="btn btn-primary btn-block" onclick="clearFields()">
-										<i class="fas fa-broom"></i> Clear Fields
+										<i class="fas fa-broom"></i> Clear
 									</button>
 								</div>
 								<div class="col-6">
 									<button type="button" class="btn btn-info btn-block add_field_button">
-										<i class="far fa-plus-square"></i> New Field
+										<i class="far fa-plus-square"></i> Add
 									</button>
 								</div>
 							</div>
 							<div id="showCheckAlert"></div>
 							<button type="submit" class="btn btn-color-custom btn-block text-white">
-								<i class="fas fa-calculator"></i> Calculate
+								<i class="loading-icon fas fa-circle-notch fa-spin hide mr-3"></i
+								><i class="fas fa-calculator"></i> Calculate
 							</button>
 						</form>
 					</div>
@@ -211,70 +223,55 @@
 			</div>
 		</div>
 
-		<!-- footer start -->
+		<!-- Footer start -->
 		<footer id="footer" class="footer-1">
 			<div class="main-footer widgets-dark typo-light">
 				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-3">
+					<div class="row d-flex justify-content-center">
+						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 							<div class="widget subscribe no-box">
 								<h5 class="widget-title">GPA CALCULATOR<span></span></h5>
 								<p>About the Product, little description will go here..</p>
 							</div>
 						</div>
 
-						<div class="col-xs-12 col-sm-6 col-md-3">
+						<div
+							class="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-lg-center justify-content-md-center justify-content-sm-start justify-content-start"
+						>
 							<div class="widget no-box">
-								<h5 class="widget-title">Quick Links<span></span></h5>
-								<ul class="thumbnail-widget">
-									<li>
-										<div class="thumb-content">
-											<a href="#.">Get Started</a>
+								<h5 class="widget-title">Follow Us on<span></span></h5>
+								<div class="wrapper">
+									<div class="button">
+										<div class="icon facebook">
+											<i class="fab fa-facebook-f"></i>
 										</div>
-									</li>
-									<li>
-										<div class="thumb-content">
-											<a href="#.">Top Leaders</a>
+										<span> <a href="" class="text-decoration-none">Facebook</a> </span>
+									</div>
+
+									<div class="button">
+										<div class="icon telegram">
+											<i class="fab fa-telegram-plane"></i>
 										</div>
-									</li>
-									<li>
-										<div class="thumb-content">
-											<a href="#.">Success Stories</a>
+										<span> <a href="" class="text-decoration-none">Telegram</a></span>
+									</div>
+
+									<div class="button">
+										<div class="icon youtube">
+											<i class="fab fa-youtube"></i>
 										</div>
-									</li>
-									<li>
-										<div class="thumb-content">
-											<a href="#.">Event/Tickets</a>
+										<span> <a href="" class="text-decoration-none">Youtube</a></span>
+									</div>
+
+									<div class="button">
+										<div class="icon linkedin">
+											<i class="fab fa-linkedin-in"></i>
 										</div>
-									</li>
-									<li>
-										<div class="thumb-content">
-											<a href="#.">News</a>
-										</div>
-									</li>
-									<li>
-										<div class="thumb-content">
-											<a href="#.">Lifestyle</a>
-										</div>
-									</li>
-									<li>
-										<div class="thumb-content">
-											<a href="#.">About</a>
-										</div>
-									</li>
-								</ul>
+										<span> <a href="" class="text-decoration-none">Linked in</a></span>
+									</div>
+								</div>
 							</div>
 						</div>
-
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<div class="widget no-box">
-								<h5 class="widget-title">Get Started<span></span></h5>
-								<p>Get access to your full Training and Marketing Suite.</p>
-								<a class="btn btn-custom" href="#." target="_blank">Register Now</a>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 							<div class="widget no-box">
 								<h5 class="widget-title">Team<span></span></h5>
 								<h6>Rizwan Hasan</h6>
@@ -354,8 +351,8 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">Edit Grade sheet</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
+						<button type="button" class="close-button close" data-dismiss="modal" aria-label="Close">
+							<span class="close" aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body" id="grade_sheet_modal">
@@ -383,7 +380,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -407,7 +403,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -431,7 +426,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -455,7 +449,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -479,7 +472,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -503,7 +495,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -527,7 +518,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -551,7 +541,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -577,7 +566,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -601,7 +589,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -625,7 +612,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -648,7 +634,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-row justify-content-center">
 								<div class="col-11 col-md-8 mb-3">
 									<div class="input-group">
@@ -673,7 +658,9 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-secondary close-button" data-dismiss="modal">
+									Close
+								</button>
 								<button type="submit" class="btn btn-primary">Apply</button>
 							</div>
 						</form>
@@ -713,125 +700,100 @@
 											<b id="calculated_gpa">GPA</b>
 										</h1>
 									</div>
-									<div class="display-button d-flex justify-content-center mt-3">
-										<button
-											type="submit"
-											class="btn btn-outline-primary"
-											onclick="displayGradeTable()"
-											style="display: none"
-										>
-											Display Grade Table
-										</button>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col d-flex justify-content-center align-content-center">
-									<div class="grade-badge font-weight-bold mt-2 mb-1">
-										<table
-											class="table table-bordered text-center table-hover"
-											id="grade_sheet_calculator_modal"
-											style="display: none"
-										>
-											<thead class="thead-dark">
-												<tr>
-													<th scope="col">Grade Letter</th>
-													<th scope="col">Grade Point</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr id="A_PLUS">
-													<td scope="row">A+</td>
-													<td>4.00</td>
-												</tr>
-												<tr>
-													<td scope="row">A</td>
-													<td>3.75</td>
-												</tr>
-												<tr>
-													<td scope="row">A-</td>
-													<td>3.50</td>
-												</tr>
-												<tr>
-													<td scope="row">B+</td>
-													<td>3.33</td>
-												</tr>
-												<tr>
-													<td scope="row">B</td>
-													<td>3.00</td>
-												</tr>
-												<tr>
-													<td scope="row">B-</td>
-													<td>2.67</td>
-												</tr>
-												<tr>
-													<td scope="row">C+</td>
-													<td>2.33</td>
-												</tr>
-												<tr>
-													<td scope="row">C</td>
-													<td>2.00</td>
-												</tr>
-												<tr>
-													<td scope="row">C-</td>
-													<td>1.67</td>
-												</tr>
-												<tr>
-													<td scope="row">D+</td>
-													<td>1.33</td>
-												</tr>
-												<tr>
-													<td scope="row">D</td>
-													<td>1.20</td>
-												</tr>
-												<tr>
-													<td scope="row">D-</td>
-													<td>1.00</td>
-												</tr>
-												<tr>
-													<td scope="row">F</td>
-													<td>0.00</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer" style="justify-content: center">
-						<form>
-							<h6 class="h6 text-center undeline">
-								<u>Feedback</u>
-							</h6>
-							<div class="form-group form-row">
-								<div class="col">
-									<select class="form-control" name="Select_Field_1">
-										<option>Questions</option>
-									</select>
-								</div>
-								<div class="col">
-									<select class="form-control" name="Select_Field_1">
-										<option>Questions</option>
-									</select>
-								</div>
-								<div class="col">
-									<select class="form-control" name="Select_Field_1">
-										<option>Questions</option>
-									</select>
+						<!-- Emoji feedback start -->
+						<div class="row" id="feedback_row">
+							<div class="app">
+								<h6 class="h6 text-center underline"><u>Feedback</u></h6>
+								<input
+									type="hidden"
+									name="feedback_post_url"
+									id="feedback_post_url"
+									value="{{ url_for("feedback") }}"
+									disabled
+								/>
+								<div class="feedback" id="feedback_items">
+									<div class="item">
+										<label for="feedback_very_sad">
+											<input
+												class="radio"
+												type="radio"
+												name="feedback"
+												id="feedback_very_sad"
+												onclick="postFeedback();"
+											/>
+											<span>😔</span>
+											<p style="text-align: center"></p>
+										</label>
+									</div>
+									<div class="item">
+										<label for="feedback_sad">
+											<input
+												class="radio"
+												type="radio"
+												name="feedback"
+												id="feedback_sad"
+												onclick="postFeedback();"
+											/>
+											<span>🙁</span>
+											<p style="text-align: center"></p>
+										</label>
+									</div>
+
+									<div class="item">
+										<label for="feedback_happy">
+											<input
+												class="radio"
+												type="radio"
+												name="feedback"
+												id="feedback_happy"
+												onclick="postFeedback();"
+											/>
+											<span>🙂</span>
+											<p style="text-align: center"></p>
+										</label>
+									</div>
+
+									<div class="item">
+										<label for="feedback_very_happy">
+											<input
+												class="radio"
+												type="radio"
+												name="feedback"
+												id="feedback_very_happy"
+												onclick="postFeedback();"
+											/>
+											<span>😀</span>
+											<p style="text-align: center"></p>
+										</label>
+									</div>
+
+									<div class="item">
+										<label for="feedback_loved">
+											<input
+												class="radio"
+												type="radio"
+												name="feedback"
+												id="feedback_loved"
+												onclick="postFeedback();"
+											/>
+											<span>😍</span>
+											<p style="text-align: center"></p>
+										</label>
+									</div>
 								</div>
 							</div>
-							<div class="form-group form-row">
-								<div class="col">
-									<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">
-										Close
-									</button>
-								</div>
-								<div class="col">
-									<button type="button" class="btn btn-primary btn-block">Submit</button>
-								</div>
+						</div>
+						<!-- Emoji feedback end -->
+						<div class="form-group form-row">
+							<div class="col">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>

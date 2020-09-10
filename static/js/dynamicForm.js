@@ -29,7 +29,7 @@ $(document).ready(function () {
                 <div class="form-group form-row" id="row${rowNo}">
                     <div class="col-5 col-sm-5">
                         <select class="form-control" name="${select_field_name}" required>
-                            <option>Select Grade</option>
+                            <option>Grade</option>
                             <option>A+</option>
                             <option>A</option>
                             <option>A-</option>

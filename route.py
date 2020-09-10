@@ -50,7 +50,7 @@ def calculate():
             print(e)
             return jsonify({"GPA": -1})  # Error Page
     else:
-        return jsonify({"GPA": -1}) # Error Page
+        return jsonify({"GPA": -1})  # Error Page
 
 
 @app.route('/feedback', methods=["POST"])
@@ -58,7 +58,8 @@ def feedback():
     formData = request.form.to_dict()
     if formData:
         try:
-            user_feedback = FEEDBACK(feed_back=formData["key"])
+            # noinspection PyArgumentList
+            user_feedback = FEEDBACK(feed_back=formData["feedback"])
             db.session.add(user_feedback)
             db.session.commit()
         except Exception as e:

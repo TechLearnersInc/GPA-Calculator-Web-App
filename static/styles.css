@@ -19,7 +19,11 @@ body {
 }
 
 .back-image {
-	background-image: url("img/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg");
+	background-image: url("img/header-background.jpg");
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .heading-text {
@@ -89,7 +93,9 @@ input {
 /* Main Footer */
 footer .main-footer {
 	padding: 20px 0;
-	background: #262431;
+	/* background: #262431; */
+	/* background: #1a237e; */
+	background: #be0002;
 }
 
 footer ul {
@@ -99,7 +105,9 @@ footer ul {
 
 /* Copy Right Footer */
 .footer-copyright {
-	background: #262431;
+	/* background: #262431; */
+	/* background: #283593; */
+	background: #df0205;
 	padding: 5px 0;
 }
 
@@ -127,7 +135,7 @@ footer ul {
 }
 
 .footer-copyright nav ul li a {
-	color: #969696;
+	color: #f1f1f1;
 }
 
 .footer-copyright nav ul li:first-child {
@@ -136,7 +144,7 @@ footer ul {
 }
 
 .footer-copyright p {
-	color: #969696;
+	color: #f1f1f1;
 	margin: 2px 0 0;
 }
 
@@ -297,10 +305,144 @@ ul.social-footer2 li a {
 	transition: all 250ms ease-in-out 0s;
 }
 .bg-dark-custom {
-	background-color: #ad0202 !important;
+	/* background-color: #262431 !important; */
+	/* background: #1a237e; */
+	background: #be0002;
 }
 .btn-color-custom {
 	background-color: #6200ee;
+}
+.btn-color-custom:hover {
+	background-color: #6d06fd;
+	border-color: #8026fd;
+}
+
+.hide {
+	display: none;
+}
+
+.wrapper .button {
+	display: inline-block;
+	height: 60px;
+	width: 60px;
+
+	/* margin: 0 5px; */
+	overflow: hidden;
+	background: #fff;
+	border-radius: 50px;
+	cursor: pointer;
+	margin-bottom: 20px;
+	box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease-out;
+}
+.wrapper .button:hover {
+	width: 200px;
+}
+.wrapper .button .icon {
+	display: inline-block;
+	height: 60px;
+	width: 60px;
+	text-align: center;
+	border-radius: 50px;
+	box-sizing: border-box;
+	line-height: 60px;
+	transition: all 0.3s ease-out;
+}
+.button .icon.facebook {
+	color: #4267b2;
+}
+.button .icon.telegram {
+	color: #139bd0;
+}
+.button .icon.youtube {
+	color: #ff0000;
+}
+.button .icon.linkedin {
+	color: #0073b0;
+}
+.wrapper .button:nth-child(1):hover .icon {
+	background: #4267b2;
+}
+.wrapper .button:nth-child(2):hover .icon {
+	background: #139bd0;
+}
+.wrapper .button:nth-child(3):hover .icon {
+	background: #ff0000;
+}
+.wrapper .button:nth-child(4):hover .icon {
+	background: #0073b0;
+}
+.wrapper .button .icon i {
+	font-size: 25px;
+	line-height: 60px;
+	transition: all 0.3s ease-out;
+}
+.wrapper .button:hover .icon i {
+	color: #fff;
+}
+.wrapper .button span {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 60px;
+	margin-left: 10px;
+	transition: all 0.3s ease-out;
+}
+.wrapper .button:nth-child(1) span a {
+	color: #4267b2;
+}
+.wrapper .button:nth-child(2) span a {
+	color: #139bd0;
+}
+.wrapper .button:nth-child(3) span a {
+	color: #ff0000;
+}
+.wrapper .button:nth-child(4) span a {
+	color: #0073b0;
+}
+
+/* Emoji Feedback start */
+.app {
+	width: 90%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+.feedback {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item {
+	width: 90px;
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+.radio {
+	display: none;
+}
+.radio ~ span {
+	font-size: 2rem;
+	filter: grayscale(100);
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.radio:checked ~ span {
+	filter: grayscale(0);
+	font-size: 3rem;
+}
+
+/* Emoji Feedback end */
+
+.btn-secondary:hover,
+.btn-primary:hover,
+.btn-danger:hover,
+.btn-info:hover,
+.btn-color-custom:hover {
+	box-shadow: 0px 0px 40px 0px rgba(128, 128, 128, 0.3);
 }
 
 @media only screen and (max-width: 768px) {
@@ -317,9 +459,44 @@ ul.social-footer2 li a {
 	.grade-point h1 {
 		font-size: 27px;
 	}
+	.wrapper .button {
+		display: inline-block;
+		transition: none;
+		width: 200px;
+	}
+	.button .icon.facebook {
+		color: #4267b2;
+	}
+	.button .icon.telegram {
+		color: #139bd0;
+	}
+	.button .icon.youtube {
+		color: #ff0000;
+	}
+	.button .icon.linkedin {
+		color: #0073b0;
+	}
+	.wrapper .button:nth-child(1) .icon {
+		background: #4267b2;
+	}
+	.wrapper .button:nth-child(2) .icon {
+		background: #139bd0;
+	}
+	.wrapper .button:nth-child(3) .icon {
+		background: #ff0000;
+	}
+	.wrapper .button:nth-child(4) .icon {
+		background: #0073b0;
+	}
+	.wrapper .button .icon i {
+		color: #fff;
+	}
 }
 @media only screen and (min-width: 768px) {
 	.d-sm-block {
 		display: inline !important;
+	}
+	.social-icon-text {
+		padding: 14.2px 20px 14px;
 	}
 }

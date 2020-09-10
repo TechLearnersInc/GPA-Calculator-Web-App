@@ -62,9 +62,9 @@ def feedback():
             user_feedback = FEEDBACK(feed_back=formData["feedback"])
             db.session.add(user_feedback)
             db.session.commit()
-            jsonify({"STATUS": "OK"})
+            return jsonify({"STATUS": "OK"})
         except Exception as e:
             print(e)
-            jsonify({"STATUS": "ERROR"})
+            return jsonify({"STATUS": "ERROR"})
     else:
         return jsonify({"STATUS": "NO DATA"})

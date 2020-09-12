@@ -9,4 +9,4 @@ PyMySQL
 SQLAlchemy
 WTForms
 Flask-Caching
-pylibmc
+python-memcached

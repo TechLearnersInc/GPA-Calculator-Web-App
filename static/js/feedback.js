@@ -14,7 +14,7 @@ function postFeedback() {
         },
         success: function (data) {
             document.getElementById("feedback_row").remove();
-            document.getElementById("feedback-thankYou-message").style.display = "block";
+            // document.getElementById("feedback-thankYou-message").style.display = "block";
         },
     }).done(function (data) {
         console.log(data);

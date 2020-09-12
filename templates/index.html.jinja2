@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-		<!-- Global CSS and Libraries-->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&display=swap" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GPA Calculator App - TechLearners"/>
+    <meta name="author" content="TechLearners"/>
 
-		<title>GPA Calculator</title>
-		<link href="/static/favicon.png" rel="icon" />
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="GPA Calculator App - TechLearners"/>
+    <!-- website name -->
+    <meta property="og:site" content="https://gpa.techlearners.xyz/"/>
+    <!-- website link -->
+    <meta property="og:title" content="GPA Calculator App - TechLearners"/>
+    <!-- title shown in the actual shared post -->
+    <meta
+            property="og:description"
+            content="Calculating GPA (Grade Point Average) has become very easy and fast with
+		the new GPA Calculator App.Use it now!"
+    />
+    <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="https://gpa.techlearners.xyz/static/img/social_media_share_thumbnail.png"/>
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="https://gpa.techlearners.xyz/"/>
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article"/>
 
-		<!-- CSS Stylesheets -->
-		<link href="/static/styles.css" rel="stylesheet" />
+    <!-- for twitter preview -->
+    <meta name="twitter:title" content="GPA Calculator App - TechLearners"/>
+    <meta name="twitter:site" content="https://gpa.techlearners.xyz/"/>
+    <meta
+            name="twitter:description"
+            content="Calculating GPA (Grade Point Average) has become very easy and fast with
+		the new GPA Calculator App.Use it now!"
+    />
+    <meta name="twitter:image" content="https://gpa.techlearners.xyz/static/img/social_media_share_thumbnail.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
 
-		<!-- Ajax CSRF Token -->
-		<!-- <script type="text/javascript">
+    <!-- Global CSS and Libraries-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <title>GPA Calculator - Grade Point Average Calculator</title>
+    <link href="/static/favicon.png" rel="icon"/>
+
+    <!-- CSS Stylesheets -->
+    <link href="/static/styles.css" rel="stylesheet"/>
+
+    <!-- Ajax CSRF Token -->
+    <script type="text/javascript">
 			let csrf_token = "{{ csrf_token() }}";
 			$.ajaxSetup({
 				beforeSend: function (xhr, settings) {
@@ -31,783 +65,803 @@
 					}
 				},
 			});
-		</script> -->
+    </script>
 
-		<!-- Scripts -->
-		<script type="text/javascript" src="/static/js/dynamicForm.js"></script>
-		<script type="text/javascript" src="/static/js/gradeSheet.js"></script>
-		<script type="text/javascript" src="/static/js/calculate.js"></script>
-		<script type="text/javascript" src="/static/js/buttonEffect.js"></script>
-		<script type="text/javascript" src="/static/js/feedback.js"></script>
-	</head>
+    <!-- Scripts -->
+    <script type="text/javascript" src="/static/js/dynamicForm.js"></script>
+    <script type="text/javascript" src="/static/js/gradeSheet.js"></script>
+    <script type="text/javascript" src="/static/js/calculate.js"></script>
+    <script type="text/javascript" src="/static/js/buttonEffect.js"></script>
+    <script type="text/javascript" src="/static/js/feedback.js"></script>
+</head>
 
-	<body>
-		<header class="header">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom">
-				<div class="container">
-					<a class="navbar-brand" href="index.html">
-						<img
-							src="/static/img/TechLearners.jpg"
-							alt="TechLearners"
-							class="img-fluid rounded"
-							width="40px"
-						/>
-						TECH LEARNERS
-					</a>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
+<body>
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img
+                        src="/static/img/TechLearners.jpg"
+                        alt="TechLearners"
+                        class="img-fluid rounded"
+                        width="40px"
+                />
+                TechLearners
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Link</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a
-									class="nav-link dropdown-toggle"
-									href="#"
-									id="navbarDropdown"
-									role="button"
-									data-toggle="dropdown"
-									aria-haspopup="true"
-									aria-expanded="false"
-								>
-									Dropdown
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#">Action</a>
-									<a class="dropdown-item" href="#">Another action</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Something else here</a>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Disabled</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/"
+                        ><i class="fas fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a
+                        >
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https:\\techlearners.xyz"
+                        ><i class="fas fa-book"></i>&nbsp;Blog</a
+                        >
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Disabled</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
-		<!-- Calculator section -->
-		<div class="back-image">
-			<div class="container calculator-section clearfix animate__animated animate__zoomIn animate__faster">
-				<div class="row justify-content-center">
-					<div class="col-12 col-sm-12 col-md-8 col-lg-7">
-						<form
-							class="form-container"
-							action="{{ url_for('calculate') }}"
-							method="POST"
-							id="calculate_gpa_form"
-						>
-							<h2
-								class="h2 text-center p-2 gpa-text animate__animated animate__fadeInUp"
-								style="color: #37474f; font-family: 'Alata', sans-serif"
-							>
-								<!-- <img src="/static/img/icon.png" class="img-fluid" alt="" width="8%" /> -->
-								GPA CALCULATOR
-							</h2>
-							<div class="form-group form-row animate__animated animate__jackInTheBox">
-								<div class="col">
-									<button
-										type="button"
-										class="btn btn-secondary btn-block load-button-gradesheet"
-										onclick="showGradeSheet();"
-									>
-										<i class="loading-icon-gradesheet fas fa-circle-notch fa-spin hide mr-3"></i
-										><span><i class="far fa-edit"></i>Grading System</span>
-									</button>
-								</div>
-							</div>
-							<input
-								type="hidden"
-								class="form-control"
-								name="gpa_grade_sheet"
-								id="gpa_grade_sheet"
-								placeholder="GPA Grade Sheet"
-								required
-							/>
-							<div class="input_field_wrap">
-								<div class="form-group form-row" id="row1">
-									<!-- Button trigger modal -->
-									<div class="col-5 col-sm-5 animate__animated animate__slideInLeft">
-										<select class="form-control" name="Select_Field_1" required>
-											<option>Grade</option>
-											<option>A+</option>
-											<option>A</option>
-											<option>A-</option>
-											<option>B+</option>
-											<option>B</option>
-											<option>B-</option>
-											<option>C+</option>
-											<option>C</option>
-											<option>C-</option>
-											<option>D+</option>
-											<option>D</option>
-											<option>D-</option>
-											<option>F</option>
-										</select>
-									</div>
-									<div class="col-4 col-sm-4 animate__animated animate__slideInLeft">
-										<input
-											type="text"
-											class="form-control"
-											name="Input_Field_1"
-											id="Input_Field_1"
-											placeholder="Credit, Ex:3.5"
-											required
-										/>
-										<script type="text/javascript">
-											$("input[name='Input_Field_1']").on("input blur paste", function () {
-												let inputField = $(this);
-												if (isNaN(Number(inputField.val()))) {
-													inputField.val("😠");
-													window.setTimeout(function () {
-														inputField.val("");
-													}, 250);
-												} else {
-													inputField.val(inputField.val().trim());
-												}
-											});
-										</script>
-									</div>
-									<div class="col-3 col-sm-3 animate__animated animate__slideInRight">
-										<button
-											type="button"
-											class="btn btn-danger btn-block add_field_button"
-											disabled
-										>
-											<i class="far fa-trash-alt"></i>
-											<span class="d-none d-sm-none d-md-none d-lg-inline">Delete</span>
-										</button>
-									</div>
-								</div>
-							</div>
-							<div class="form-group form-row">
-								<div class="col-6 animate__animated animate__rotateInDownLeft">
-									<button type="button" class="btn btn-primary btn-block" onclick="clearFields();">
-										<i class="fas fa-broom"></i> Clear
-									</button>
-								</div>
-								<div class="col-6 animate__animated animate__rotateInDownRight">
-									<button type="button" class="btn btn-info btn-block add_field_button">
-										<i class="far fa-plus-square"></i> Add
-									</button>
-								</div>
-							</div>
-							<div id="showCheckAlert"></div>
-							<button
-								type="submit"
-								class="btn btn-color-custom btn-block text-white animate__animated animate__zoomInUp"
-							>
-								<i class="loading-icon-calculate fas fa-circle-notch fa-spin hide mr-3"></i
-								><i class="fas fa-calculator"></i>Calculate
-							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- Calculator section -->
+<div class="back-image">
+    <div class="container calculator-section clearfix animate__animated animate__zoomIn animate__faster">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-7">
+                <form
+                        class="form-container"
+                        action="{{ url_for('calculate') }}"
+                        method="POST"
+                        id="calculate_gpa_form"
+                >
+                    <h2
+                            class="h2 text-center p-2 gpa-text animate__animated animate__fadeInUp"
+                            style="color: #37474f; font-family: 'Alata', sans-serif"
+                    >
+                        <!-- <img src="/static/img/icon.png" class="img-fluid" alt="" width="8%" /> -->
+                        GPA CALCULATOR
+                    </h2>
+                    <div class="form-group form-row animate__animated animate__jackInTheBox">
+                        <div class="col">
+                            <button
+                                    type="button"
+                                    class="btn btn-secondary btn-block load-button-gradesheet"
+                                    onclick="showGradeSheet();"
+                            >
+                                <i class="loading-icon-gradesheet fas fa-circle-notch fa-spin hide mr-3"></i
+                                ><span><i class="far fa-edit"></i>&nbsp;Grading System</span>
+                            </button>
+                        </div>
+                    </div>
+                    <input
+                            type="hidden"
+                            class="form-control"
+                            name="gpa_grade_sheet"
+                            id="gpa_grade_sheet"
+                            placeholder="GPA Grade Sheet"
+                            required
+                    />
+                    <div class="input_field_wrap">
+                        <div class="form-group form-row" id="row1">
+                            <!-- Button trigger modal -->
+                            <div class="col-5 col-sm-5 animate__animated animate__slideInLeft">
+                                <select class="form-control" name="Select_Field_1" required>
+                                    <option>Grade</option>
+                                    <option>A+</option>
+                                    <option>A</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B</option>
+                                    <option>B-</option>
+                                    <option>C+</option>
+                                    <option>C</option>
+                                    <option>C-</option>
+                                    <option>D+</option>
+                                    <option>D</option>
+                                    <option>D-</option>
+                                    <option>F</option>
+                                </select>
+                            </div>
+                            <div class="col-4 col-sm-4 animate__animated animate__slideInLeft">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Input_Field_1"
+                                        id="Input_Field_1"
+                                        placeholder="Credits, Ex: 3.0"
+                                        required
+                                />
+                                <script type="text/javascript">
+                                    $("input[name='Input_Field_1']").on("input blur paste", function () {
+                                        let inputField = $(this);
+                                        if (isNaN(Number(inputField.val()))) {
+                                            inputField.val("😠");
+                                            window.setTimeout(function () {
+                                                inputField.val("");
+                                            }, 250);
+                                        } else {
+                                            inputField.val(inputField.val().trim());
+                                        }
+                                    });
+                                </script>
+                            </div>
+                            <div class="col-3 col-sm-3 animate__animated animate__slideInRight">
+                                <button
+                                        type="button"
+                                        class="btn btn-danger btn-block add_field_button"
+                                        disabled
+                                >
+                                    <i class="far fa-trash-alt"></i>
+                                    <span class="d-none d-sm-none d-md-none d-lg-inline">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-6 animate__animated animate__rotateInDownLeft">
+                            <button type="button" class="btn btn-primary btn-block" onclick="clearFields();">
+                                <i class="fas fa-broom"></i>&nbsp;Clear
+                            </button>
+                        </div>
+                        <div class="col-6 animate__animated animate__rotateInDownRight">
+                            <button type="button" class="btn btn-info btn-block add_field_button">
+                                <i class="far fa-plus-square"></i>&nbsp;Add
+                            </button>
+                        </div>
+                    </div>
+                    <div id="showCheckAlert"></div>
+                    <button
+                            type="submit"
+                            class="btn btn-color-custom btn-block text-white animate__animated animate__zoomInUp"
+                    >
+                        <i class="loading-icon-calculate fas fa-circle-notch fa-spin hide mr-3"></i
+                        ><i class="fas fa-calculator"></i>&nbsp;Calculate
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-		<!-- Footer start -->
-		<footer id="footer" class="footer-1">
-			<div class="main-footer widgets-dark typo-light">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="col-xs-12 col-sm-12 col-md-2 col-lg-3">
-							<div class="widget subscribe no-box">
-								<h5 class="widget-title">GPA CALCULATOR<span></span></h5>
-								<p>About the Product, little description will go here..</p>
-							</div>
-						</div>
+<!-- Footer start -->
+<footer id="footer" class="footer-1">
+    <div class="main-footer widgets-dark typo-light">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-3">
+                    <div class="widget subscribe no-box">
+                        <h5 class="widget-title"><i class="fas fa-info-circle"></i>&nbsp;About<span></span></h5>
+                        <p>
+                            This Grade Point Average (GPA) calculator is a quick and easy to use web
+                            application. You can edit the Grading System according to your educational
+                            institution's grading criteria. Thanks for using this GPA calculator.
+                        </p>
+                    </div>
+                </div>
 
-						<div
-							class="col-xs-12 col-sm-12 col-md-7 col-lg-6 d-flex justify-content-lg-center justify-content-md-center justify-content-sm-start justify-content-start"
-						>
-							<div class="widget no-box">
-								<h5 class="widget-title">Follow Us on<span></span></h5>
-								<div class="wrapper">
-									<div class="button">
-										<div class="icon facebook">
-											<i class="fab fa-facebook-f"></i>
-										</div>
-										<span> <a href="" class="text-decoration-none">Facebook</a> </span>
-									</div>
+                <div
+                        class="col-xs-12 col-sm-12 col-md-7 col-lg-6 d-flex justify-content-lg-center justify-content-md-center justify-content-sm-start justify-content-start"
+                >
+                    <div class="widget no-box">
+                        <h5 class="widget-title">
+                            <i class="fas fa-thumbs-up"></i>&nbsp;Follow Us On<span></span>
+                        </h5>
+                        <div class="wrapper">
+                            <div class="button">
+                                <div class="icon facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <span>
+											<a
+                                                    href="https://www.facebook.com/TechLearnersInc"
+                                                    class="text-decoration-none"
+                                            >Facebook</a
+                                            >
+										</span>
+                            </div>
 
-									<div class="button">
-										<div class="icon telegram">
-											<i class="fab fa-telegram-plane"></i>
-										</div>
-										<span> <a href="" class="text-decoration-none">Telegram</a></span>
-									</div>
+                            <div class="button">
+                                <div class="icon telegram">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </div>
+                                <span>
+											<a href="https://t.me/TechLearners" class="text-decoration-none"
+                                            >Telegram</a
+                                            ></span
+                                >
+                            </div>
 
-									<div class="button">
-										<div class="icon youtube">
-											<i class="fab fa-youtube"></i>
-										</div>
-										<span> <a href="" class="text-decoration-none">Youtube</a></span>
-									</div>
+                            <div class="button">
+                                <div class="icon youtube">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <span
+                                ><a
+                                        href="https://www.youtube.com/channel/UCbuzi53dKhBa4BAe5KeIdYg"
+                                        class="text-decoration-none"
+                                >YouTube</a
+                                ></span
+                                >
+                            </div>
 
-									<div class="button">
-										<div class="icon linkedin">
-											<i class="fab fa-linkedin-in"></i>
-										</div>
-										<span> <a href="" class="text-decoration-none">Linked in</a></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-							<div class="widget no-box">
-								<h5 class="widget-title">Team<span></span></h5>
-								<h6>Rizwan Hasan</h6>
-								<ul class="social-footer2">
-									<li class="">
-										<a href="https://www.facebook.com/" target="_blank" title="Facebook"
-											><i class="fab fa-facebook-square"></i
-										></a>
-									</li>
-									<li class="">
-										<a href="https://twitter.com" target="_blank" title="Twitter"
-											><i class="fab fa-twitter"></i
-										></a>
-									</li>
-									<li class="">
-										<a title="Github" target="_blank" href="https://www.github.com/"
-											><i class="fab fa-github"></i
-										></a>
-									</li>
-									<li class="">
-										<a title="Email" target="_blank" href="mailto:info@domain.com"
-											><i class="fas fa-envelope"></i
-										></a>
-									</li>
-								</ul>
+                            <div class="button">
+                                <div class="icon linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
+                                <span>
+											<a
+                                                    href="https://www.linkedin.com/company/techlearners/"
+                                                    class="text-decoration-none"
+                                            >LinkedIn</a
+                                            ></span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <div class="widget no-box">
+                        <h5 class="widget-title">
+                            <i class="fas fa-award"></i>&nbsp;Special Thanks<span></span>
+                        </h5>
+                        <h6 style="font-weight: bold">Tanmoy Barua</h6>
+                        <h6>Lead Web Designer</h6>
+                        <ul class="social-footer2">
+                            <li class="">
+                                <a
+                                        href="https://www.linkedin.com/in/tanmoy-barua-89480b161/"
+                                        target="_blank"
+                                        title="LinkedIn"
+                                ><i class="fab fa-linkedin"></i
+                                ></a>
+                            </li>
+                            <li class="">
+                                <a title="GitHub" target="_blank" href="https://github.com/tanmoy43"
+                                ><i class="fab fa-github"></i
+                                ></a>
+                            </li>
+                        </ul>
+                        <br/>
+                        <h6 style="font-weight: bold">Rubaiath E Ulfath</h6>
+                        <h6>Backend Contributor & Tester</h6>
+                        <ul class="social-footer2">
+                            <li class="">
+                                <a
+                                        href="https://www.linkedin.com/in/rubaiath-e-ulfath"
+                                        target="_blank"
+                                        title="LinkedIn"
+                                ><i class="fab fa-linkedin"></i
+                                ></a>
+                            </li>
+                            <li class="">
+                                <a title="Github" target="_blank" href="https://github.com/RUBAIATH-E-ULFATH"
+                                ><i class="fab fa-github"></i
+                                ></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-								<p>Tanmoy Barua</p>
-								<ul class="social-footer2">
-									<li class="">
-										<a href="https://www.facebook.com/" target="_blank" title="Facebook"
-											><i class="fab fa-facebook-square"></i
-										></a>
-									</li>
-									<li class="">
-										<a href="https://twitter.com" target="_blank" title="Twitter"
-											><i class="fab fa-twitter"></i
-										></a>
-									</li>
-									<li class="">
-										<a title="Github" target="_blank" href="https://www.github.com/"
-											><i class="fab fa-github"></i
-										></a>
-									</li>
-									<li class="">
-										<a title="Email" target="_blank" href="mailto:tanmoybarua43@gmail.com"
-											><i class="fas fa-envelope"></i
-										></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>Copyright TechLearners © 2020. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-			<div class="footer-copyright">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<p>Copyright TechLearners © 2020. All rights reserved.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-
-		<!-- Modal -->
-		<div
-			class="modal fade"
-			id="gradeSheetModal"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="exampleModalLabel"
-			aria-hidden="true"
-		>
-			<div class="modal-dialog animate__animated animate__slideInUp" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Edit Grade sheet</h5>
-						<button type="button" class="close-button close" data-dismiss="modal" aria-label="Close">
-							<span class="close" aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" id="grade_sheet_modal">
-						<h6 class="text-center" id="exampleModalLabel">Change your grade sheet</h6>
-						<form id="grade_sheet_form">
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>A+</b> </span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="A_PLUS"
-											name="A_PLUS"
-											placeholder="Value of A+"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+<!-- Modal -->
+<div
+        class="modal fade"
+        id="gradeSheetModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog animate__animated animate__slideInUp" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">EDIT GRADING SYSTEM</h5>
+                <button type="button" class="close-button close" data-dismiss="modal" aria-label="Close">
+                    <span class="close" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="grade_sheet_modal">
+                <h6 class="text-left">
+                    Change the grade points of different Grades according to your <b>Grading System</b>. Keep
+                    the boxes <b>blank</b> for the grades that doesn't exist in your grading system.
+                </h6>
+                <p class="text-center" style="font-weight: bold">*** All changes are saved automatically</p>
+                <form id="grade_sheet_form">
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>A+</b> </span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_PLUS"
+                                        name="A_PLUS"
+                                        placeholder="Value of A+"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom">
 												<b><i class="fas fa-pencil-alt"></i></b>
 											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>A</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="A"
-											name="A"
-											placeholder="Value of A"
-											value="4.0"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>A</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A"
+                                        name="A"
+                                        placeholder="Value of A"
+                                        value="4.0"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>A-</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="A_MINUS"
-											name="A_MINUS"
-											placeholder="Value of A-"
-											value="3.7"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>A-</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_MINUS"
+                                        name="A_MINUS"
+                                        placeholder="Value of A-"
+                                        value="3.7"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>B+</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="B_PLUS"
-											name="B_PLUS"
-											placeholder="Value of B+"
-											value="3.3"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>B+</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="B_PLUS"
+                                        name="B_PLUS"
+                                        placeholder="Value of B+"
+                                        value="3.3"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>B</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="B"
-											name="B"
-											placeholder="Value of B"
-											value="3.0"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>B</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="B"
+                                        name="B"
+                                        placeholder="Value of B"
+                                        value="3.0"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>B-</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="B_MINUS"
-											name="B_MINUS"
-											placeholder="Value of B-"
-											value="2.7"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>B-</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="B_MINUS"
+                                        name="B_MINUS"
+                                        placeholder="Value of B-"
+                                        value="2.7"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>C+</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="C_PLUS"
-											name="C_PLUS"
-											placeholder="Value of C+"
-											value="2.3"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>C+</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="C_PLUS"
+                                        name="C_PLUS"
+                                        placeholder="Value of C+"
+                                        value="2.3"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>C</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="C"
-											name="C"
-											placeholder="Value of C"
-											value="2.0"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>C</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="C"
+                                        name="C"
+                                        placeholder="Value of C"
+                                        value="2.0"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>C-</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="C_MINUS"
-											name="C_MINUS"
-											placeholder="Value of C-"
-											value="1.7"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>C-</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="C_MINUS"
+                                        name="C_MINUS"
+                                        placeholder="Value of C-"
+                                        value="1.7"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom">
 												<b>
 													<i class="fas fa-pencil-alt"></i>
 												</b>
 											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>D+</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="D_PLUS"
-											name="D_PLUS"
-											placeholder="Value of D+"
-											value="1.3"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>D+</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="D_PLUS"
+                                        name="D_PLUS"
+                                        placeholder="Value of D+"
+                                        value="1.3"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>D</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="D"
-											name="D"
-											placeholder="Value of D"
-											value="1.0"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>D</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="D"
+                                        name="D"
+                                        placeholder="Value of D"
+                                        value="1.0"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>D-</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="D_MINUS"
-											name="D_MINUS"
-											placeholder="Value of D-"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>D-</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="D_MINUS"
+                                        name="D_MINUS"
+                                        placeholder="Value of D-"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-row justify-content-center">
-								<div class="col-11 col-md-8 mb-3">
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>F</b></span>
-										</div>
-										<input
-											type="text"
-											class="form-control"
-											id="F"
-											name="F"
-											placeholder="Value of F"
-											value="0"
-											aria-describedby="inputGroupPrepend"
-										/>
-										<div class="input-group-prepend">
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="col-11 col-md-8 mb-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>F</b></span>
+                                </div>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="F"
+                                        name="F"
+                                        placeholder="Value of F"
+                                        value="0"
+                                        aria-describedby="inputGroupPrepend"
+                                />
+                                <div class="input-group-prepend">
 											<span class="input-group-text input-group-text-custom"
-												><b><i class="fas fa-pencil-alt"></i></b
-											></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary close-button" data-dismiss="modal">
-									Close
-								</button>
-								<button type="submit" class="btn btn-primary">Apply</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+                                            ><b><i class="fas fa-pencil-alt"></i></b
+                                            ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-		<!-- Calculate modals -->
-		<div
-			class="modal fade"
-			id="calculatesheet"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="myLargeModalLabel"
-			aria-hidden="true"
-		>
-			<div class="modal-dialog animate__animated animate__zoomInUp animated__faster">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title text-center" id="exampleModalLabel">
-							<b>Total Calculation</b>
-						</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" id="grade_sheet_modal">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="grade-point text-center">
-										<h1
-											class="h1 mt-3 badge badge-info"
-											style="font-size: 3.5rem; font-family: 'PT Sans', sans-serif"
-										>
-											<b id="calculated_gpa">GPA</b>
-										</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer" style="justify-content: center">
-						<!-- Emoji feedback start -->
-						<div class="row" id="feedback_row">
-							<div class="app">
-								<h6 class="h6 text-center underline"><u>Feedback</u></h6>
-								<input
-									type="hidden"
-									name="feedback_post_url"
-									id="feedback_post_url"
-									value="{{ url_for('feedback') }}"
-									disabled
-								/>
-								<div class="feedback" id="feedback_items">
-									<div class="item">
-										<label for="feedback_very_sad">
-											<input
-												class="radio"
-												type="radio"
-												name="feedback"
-												id="feedback_very_sad"
-												onclick="postFeedback();"
-											/>
-											<span>😔</span>
-											<p style="text-align: center"></p>
-										</label>
-									</div>
-									<div class="item">
-										<label for="feedback_sad">
-											<input
-												class="radio"
-												type="radio"
-												name="feedback"
-												id="feedback_sad"
-												onclick="postFeedback();"
-											/>
-											<span>🙁</span>
-											<p style="text-align: center"></p>
-										</label>
-									</div>
+<!-- Calculate modals -->
+<div
+        class="modal fade"
+        id="calculatesheet"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog animate__animated animate__zoomInUp animated__faster">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">
+                    <b>Total Calculation</b>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="grade_sheet_modal">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="grade-point text-center">
+                                <h1
+                                        class="h1 mt-3 badge badge-info"
+                                        style="font-size: 3.5rem; font-family: 'PT Sans', sans-serif"
+                                >
+                                    <b id="calculated_gpa">GPA</b>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: center">
+                <!-- Emoji feedback start -->
+                <div class="row" id="feedback_row">
+                    <div class="app">
+                        <h6 class="h6 text-center underline"><u>Feedback</u></h6>
+                        <input
+                                type="hidden"
+                                name="feedback_post_url"
+                                id="feedback_post_url"
+                                value="{{ url_for('feedback') }}"
+                                disabled
+                        />
+                        <div class="feedback" id="feedback_items">
+                            <div class="item">
+                                <label for="feedback_very_sad">
+                                    <input
+                                            class="radio"
+                                            type="radio"
+                                            name="feedback"
+                                            id="feedback_very_sad"
+                                            onclick="postFeedback();"
+                                    />
+                                    <span>😔</span>
+                                    <p style="text-align: center"></p>
+                                </label>
+                            </div>
+                            <div class="item">
+                                <label for="feedback_sad">
+                                    <input
+                                            class="radio"
+                                            type="radio"
+                                            name="feedback"
+                                            id="feedback_sad"
+                                            onclick="postFeedback();"
+                                    />
+                                    <span>🙁</span>
+                                    <p style="text-align: center"></p>
+                                </label>
+                            </div>
 
-									<div class="item">
-										<label for="feedback_happy">
-											<input
-												class="radio"
-												type="radio"
-												name="feedback"
-												id="feedback_happy"
-												onclick="postFeedback();"
-											/>
-											<span>🙂</span>
-											<p style="text-align: center"></p>
-										</label>
-									</div>
+                            <div class="item">
+                                <label for="feedback_happy">
+                                    <input
+                                            class="radio"
+                                            type="radio"
+                                            name="feedback"
+                                            id="feedback_happy"
+                                            onclick="postFeedback();"
+                                    />
+                                    <span>🙂</span>
+                                    <p style="text-align: center"></p>
+                                </label>
+                            </div>
 
-									<div class="item">
-										<label for="feedback_very_happy">
-											<input
-												class="radio"
-												type="radio"
-												name="feedback"
-												id="feedback_very_happy"
-												onclick="postFeedback();"
-											/>
-											<span>😀</span>
-											<p style="text-align: center"></p>
-										</label>
-									</div>
+                            <div class="item">
+                                <label for="feedback_very_happy">
+                                    <input
+                                            class="radio"
+                                            type="radio"
+                                            name="feedback"
+                                            id="feedback_very_happy"
+                                            onclick="postFeedback();"
+                                    />
+                                    <span>😀</span>
+                                    <p style="text-align: center"></p>
+                                </label>
+                            </div>
 
-									<div class="item">
-										<label for="feedback_loved">
-											<input
-												class="radio"
-												type="radio"
-												name="feedback"
-												id="feedback_loved"
-												onclick="postFeedback();"
-											/>
-											<span>😍</span>
-											<p style="text-align: center"></p>
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div
-							class="col-lg-12 justify-content-center"
-							id="feedback-thankYou-message"
-							style="display: none"
-						>
-							<div class="thankYou-message">
-								<p class="text-success" style="margin-top: 1rem; margin-bottom: 0; text-align: center">
-									<b>Thanks For Giving Us Your Feedback!</b>
-								</p>
-							</div>
-							<br />
-						</div>
-						<!-- Emoji feedback end -->
-					</div>
-					<div class="form-group form-row" style="text-align: center">
-						<div class="col">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+                            <div class="item">
+                                <label for="feedback_loved">
+                                    <input
+                                            class="radio"
+                                            type="radio"
+                                            name="feedback"
+                                            id="feedback_loved"
+                                            onclick="postFeedback();"
+                                    />
+                                    <span>😍</span>
+                                    <p style="text-align: center"></p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div
+                    class="col-lg-12 justify-content-center"
+                    id="feedback-thankYou-message"
+                    style="display: none"
+                >
+                    <div class="thankYou-message">
+                        <p class="text-success" style="margin-top: 1rem; margin-bottom: 0; text-align: center">
+                            <b>Thanks For Giving Us Your Feedback!</b>
+                        </p>
+                    </div>
+                    <br />
+                </div> -->
+                <!-- Emoji feedback end -->
+            </div>
+            <div class="form-group form-row" style="text-align: center">
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

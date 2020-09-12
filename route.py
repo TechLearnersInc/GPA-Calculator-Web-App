@@ -24,11 +24,11 @@ def calculate():
     if formData:
         try:
             data_list = DataPreProcessingGPA(formData).clean_data()
-            # if data_list == -1:
-            #     return "ERROR" # Error Page
+            if data_list == -1:
+                return jsonify({"GPA": -1})  # Error Page
             gpa = calculate_gpa.calculate(data_list[1], data_list[0])
-            # if gpa == - 1:
-            #     return "ERROR" # Error Page
+            if gpa == - 1:
+                return jsonify({"GPA": -1})  # Error Page
             scale_value_list = list(data_list[0].values())
             scale = max(scale_value_list)
             grade_sheet = data_list[0]
@@ -39,7 +39,7 @@ def calculate():
                 db.session.commit()
             except Exception as e:
                 print(e)
-                # return  # Error Page
+                return jsonify({"GPA": -1})
 
             return jsonify({"GPA": gpa})
         except (DeprecationWarning, ConnectionAbortedError, ConnectionError, ConnectionRefusedError) as e:

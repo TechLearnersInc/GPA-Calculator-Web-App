@@ -11,8 +11,8 @@ $(document).ready(function () {
 	let calculated_gpa_id = "calculated_gpa";
 	let gpa_grade_sheet_input_box_id = "gpa_grade_sheet";
 
-	$(`b[id='${calculated_gpa_id}']`).text(`GPA: 3.5`);
-	$(`#${calculate_modal_id}`).modal("show");
+	// $(`b[id='${calculated_gpa_id}']`).text(`GPA: 3.5`);
+	// $(`#${calculate_modal_id}`).modal("show");
 
 	$(`#${calculate_form_id}`).submit(function (event) {
 		event.preventDefault();

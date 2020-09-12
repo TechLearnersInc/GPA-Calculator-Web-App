@@ -14,7 +14,7 @@ $(document).ready(function () {
     let wrapper = $(`.${input_field_wrap_class_name}`);
     let add_button = $(".add_field_button");
     // let count = 1;
-    let max_fields = 10;
+    let max_fields = 15;
     let fieldLimitAlertID = "feildLimitAlert";
 
     // Add New Field
@@ -87,7 +87,7 @@ $(document).ready(function () {
             /* empty */;
         }
         else { // If Limit Reached
-            let limitAlertMessage = "Limit 10 is reached";
+            let limitAlertMessage = `Limit ${max_fields} is reached`;
             let limitAlertTimeout = 3;
             let limit_alert_html_code = `
                 <div id="feildLimitAlert" class="alert alert-danger" role="alert">

@@ -1,6 +1,6 @@
 import json
 
-from flask import render_template, jsonify, request, session
+from flask import render_template, jsonify, request
 
 from Database.database_models import GPA_HISTORY, FEEDBACK
 from app import app, db, cache

@@ -1,10 +1,29 @@
 from flask import Flask
+from flask_caching import Cache
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 from os import environ
 from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
+
+cache = Cache()
+cache.init_app(
+    app=app,
+    config={
+        "CACHE_TYPE": "memcached",
+        'tcp_nodelay': True,
+        'tcp_keepalive': True,
+        'connect_timeout': 2000,
+        'send_timeout': 750 * 1000,
+        'receive_timeout': 750 * 1000,
+        '_poll_timeout': 2000,
+        'ketama': True,
+        'remove_failed': 1,
+        'retry_timeout': 2,
+        'dead_timeout': 30
+    }
+)
 
 app.config['SECRET_KEY'] = environ['SECRET_KEY']
 app.config[

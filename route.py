@@ -3,19 +3,15 @@ import json
 from flask import render_template, jsonify, request, session
 
 from Database.database_models import GPA_HISTORY, FEEDBACK
-from app import app, db
+from app import app, db, cache
 from modules import calculate_gpa
 from modules.data_preprocessing import DataPreProcessingGPA
 
 
 @app.route('/')
 @app.route('/index')
+@cache.memoize()
 def index():
-    try:
-        if session["id"]:
-            print(session["id"])
-    except KeyError:
-        pass
     return render_template("index.html.jinja2")
 
 

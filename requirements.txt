@@ -8,3 +8,5 @@ Jinja2
 PyMySQL
 SQLAlchemy
 WTForms
+Flask-Caching
+pylibmc

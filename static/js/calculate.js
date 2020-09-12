@@ -1,7 +1,7 @@
 "use strict";
 
 /*
-    Calculate
+	Calculate
 */
 
 $(document).ready(function () {

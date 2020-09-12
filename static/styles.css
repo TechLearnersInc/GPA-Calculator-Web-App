@@ -12,7 +12,7 @@ body {
 	width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(-46deg, #17a2b8, #007bff);
+	background: linear-gradient(-46deg, #cff10e, #cfdd0e);
 	/* background-size: 400% 400%; */
 	animation: gradient 20s ease infinite;
 	border-radius: 8px;
@@ -36,6 +36,7 @@ body {
 
 form#calculate_gpa_form {
 	background-color: #fafafa;
+	/* background-color: #ffeb3b; */
 }
 
 .form-container {
@@ -93,8 +94,7 @@ input {
 /* Main Footer */
 footer .main-footer {
 	padding: 20px 0;
-	/* background: #262431; */
-	/* background: #1a237e; */
+	/* background: #ba000d; */
 	background: #be0002;
 }
 
@@ -107,7 +107,7 @@ footer ul {
 .footer-copyright {
 	/* background: #262431; */
 	/* background: #283593; */
-	background: #df0205;
+	background: #be0002;
 	padding: 5px 0;
 }
 
@@ -336,7 +336,7 @@ ul.social-footer2 li a {
 	transition: all 0.3s ease-out;
 }
 .wrapper .button:hover {
-	width: 200px;
+	width: 180px;
 }
 .wrapper .button .icon {
 	display: inline-block;
@@ -490,6 +490,9 @@ ul.social-footer2 li a {
 	}
 	.wrapper .button .icon i {
 		color: #fff;
+	}
+	.app {
+		width: 70%;
 	}
 }
 @media only screen and (min-width: 768px) {

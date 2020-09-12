@@ -27,7 +27,7 @@ $(document).ready(function () {
             let select_field_name = `Select_Field_${rowNo}`;
             let new_gpa_row_htmlCode = `
                 <div class="form-group form-row" id="row${rowNo}">
-                    <div class="col-5 col-sm-5">
+                    <div class="col-5 col-sm-5 animate__animated animate__slideInLeft">
                         <select class="form-control" name="${select_field_name}" required>
                             <option>Grade</option>
                             <option>A+</option>
@@ -45,7 +45,7 @@ $(document).ready(function () {
                             <option>F</option>
                         </select>
                     </div>
-                    <div class="col-4 col-sm-4">
+                    <div class="col-4 col-sm-4 animate__animated animate__slideInLeft">
                         <input
                             type="text"
                             class="form-control"
@@ -71,7 +71,7 @@ $(document).ready(function () {
                             );
                         </script>
                     </div>
-                    <div class="col-3 col-sm-3">
+                    <div class="col-3 col-sm-3 animate__animated animate__slideInRight">
                         <a href="#" class="btn btn-danger btn-block remove_field" id="${rowNo}">
                             <i class="far fa-trash-alt"></i>
                             <span class="d-none d-sm-none d-md-none d-lg-inline">DELETE</span>

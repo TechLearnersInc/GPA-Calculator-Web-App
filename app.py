@@ -27,7 +27,7 @@ cache.init_app(
 
 app.config['SECRET_KEY'] = environ['SECRET_KEY']
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymys bosql://{environ['DB_USER']}:{environ['DB_PASSWORD']}@{environ['DB_HOST']}/{environ['DB_NAME']}"
+    'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{environ['DB_USER']}:{environ['DB_PASSWORD']}@{environ['DB_HOST']}/{environ['DB_NAME']}"
 app.config['SQLALCHEMY_POOL_SIZE'] = 20
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
